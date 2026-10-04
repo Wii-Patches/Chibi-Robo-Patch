@@ -1,6 +1,6 @@
 # Chibi-Robo Patch
 
-Play **Okaeri! Chibi-Robo! Happy Richie Ōsōji!** (Wii, `R24J01`) with a
+Play **Wii de Asobu: Chibi-Robo!** (*New Play Control! Chibi-Robo!*, Wii, `R24J01`) with a
 **GameCube controller** or a **Classic Controller** instead of a Wii Remote and
 Nunchuk. Works on the Japanese release, including the fan English translation
 of it.
