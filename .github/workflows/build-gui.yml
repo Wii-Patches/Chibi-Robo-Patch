@@ -99,7 +99,7 @@ jobs:
             $BINS --distpath pyinst_dist tools/gui.py
           cp wit-gpl-2.0.txt "pyinst_dist/Chibi-Robo-Patcher.app/Contents/Resources/wit-gpl-2.0.txt"
           cd pyinst_dist
-          zip -qr "../Chibi-Robo-Patch-${{ matrix.target }}.zip" Chibi-Robo-Patcher.app
+          zip -qr "../Chibi-Robo-ISO-Patcher-${{ matrix.target }}.zip" Chibi-Robo-Patcher.app
 
       - name: Build app (Linux)
         if: matrix.target == 'linux-x86_64'
@@ -112,7 +112,7 @@ jobs:
             $BINS --distpath pyinst_dist tools/gui.py
           cp wit-gpl-2.0.txt pyinst_dist/Chibi-Robo-Patcher/
           cd pyinst_dist
-          tar -czf "../Chibi-Robo-Patch-${{ matrix.target }}.tar.gz" Chibi-Robo-Patcher
+          tar -czf "../Chibi-Robo-ISO-Patcher-${{ matrix.target }}.tar.gz" Chibi-Robo-Patcher
 
       - name: Build app (Windows)
         if: matrix.target == 'windows-x86_64'
@@ -127,19 +127,19 @@ jobs:
             $BINS --distpath pyinst_dist tools/gui.py
           cp wit-gpl-2.0.txt pyinst_dist/Chibi-Robo-Patcher/
           cd pyinst_dist
-          7z a "../Chibi-Robo-Patch-${{ matrix.target }}.zip" Chibi-Robo-Patcher \
-            || powershell -Command "Compress-Archive -Path Chibi-Robo-Patcher -DestinationPath ../Chibi-Robo-Patch-${{ matrix.target }}.zip"
+          7z a "../Chibi-Robo-ISO-Patcher-${{ matrix.target }}.zip" Chibi-Robo-Patcher \
+            || powershell -Command "Compress-Archive -Path Chibi-Robo-Patcher -DestinationPath ../Chibi-Robo-ISO-Patcher-${{ matrix.target }}.zip"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Chibi-Robo-Patch-${{ matrix.target }}
-          path: Chibi-Robo-Patch-${{ matrix.target }}.*
+          name: Chibi-Robo-ISO-Patcher-${{ matrix.target }}
+          path: Chibi-Robo-ISO-Patcher-${{ matrix.target }}.*
 
       - name: Attach to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: Chibi-Robo-Patch-${{ matrix.target }}.*
+          files: Chibi-Robo-ISO-Patcher-${{ matrix.target }}.*
 
   patch-files:
     needs: check
